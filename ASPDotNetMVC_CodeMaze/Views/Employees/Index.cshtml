@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Employee>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Employees</h2>
+
+<a class="btn btn-primary" asp-controller="Employees" asp-action="Create">New</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Display Order</th>
+            <th scope="col">Name</th>
+            <th scope="col">Nationality</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.DisplayIndex</td>
+                <td>@emp.Name</td>
+                <td>@emp.Nationlity</td>
+                <td>@emp.Salary</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@emp.Id">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@emp.Id">Delete</a>
+                    <a asp-action="Details" asp-route-id="@emp.Id">Details</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+<div>
+    <partial name="Footer" />
+</div>
